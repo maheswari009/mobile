@@ -23,14 +23,18 @@ public class Main {
         WebElement el = driver.findElement(home.Search);
         System.out.println("browserURL(driver)");
         el.sendKeys("iphone");
-        driver.findElement(By.xpath("//input[@id='myInput']"));
+        driver.findElement(By.xpath("//input[@autocomplete=\"off\"]")).click();
        // Thread.sleep (1000);
+        driver.findElement(home.button).click();
+        driver.findElement(home.sort).click();
+        driver.findElement(By.xpath("//*[@id=\"scroll_product\"]/div[1]/div/div[1]/div[1]/a")).click();
         String actualURL=browserURL(driver);
-        String expectedURL= "https://www.poorvikamobile.com/apple-iphone-12-mini-white-256gb";
-        String headervalue = "Apple iphone 12 mini";
-        String actualheaderValue=driver.findElement(By.xpath("//h1[@content=\"Apple iPhone 12 Mini (White, 256GB)\"]")).getText();
-        String actualprice = driver.findElement(By.xpath("//span[@itemprop=\"price\"]")).getText();
-        String  expectedprice = "RS.82,900";
+        //Thread.sleep(2000);
+        String expectedURL= "https://www.poorvikamobile.com/apple-iphone-xr-red-64gb";
+        String headervalue = "Apple-iphone-xr-64gb";
+        String actualheaderValue=driver.findElement(By.xpath("//h1[@itemprop=\"name\"]")).getText();
+        String actualprice = driver.findElement(By.xpath("//span[@id=\"price-special\"]")).getText();
+        String expectedprice = "RS.47,900";
 
         if(expectedURL.equals(actualURL))
         {
